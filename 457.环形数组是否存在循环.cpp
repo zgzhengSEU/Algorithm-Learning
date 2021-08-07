@@ -91,24 +91,32 @@ public:
     using VStatus=enum{UNDISCOVERED,DISCOVERED,VISITED};
     bool circularArrayLoop(vector<int>& nums) {
         int nV=nums.size();
-        vector<int> g(nV);
+        unordered_map<int,int> g;
+        unordered_map<int,int> rg;
         vector<VStatus> status(nV,UNDISCOVERED);
         for(int i=0;i!=nV;++i){
-            g[i]=(nums[i]+i+nV)%nV;
+            if(nums[i]>0){
+                g.insert({i,((nums[i]+i)%nV+nV)%nV});
+            }else{
+                rg.insert({i,((nums[i]+i)%nV+nV)%nV});
+            }
         }
-        for(int i=0;i!=nV;++i){
-            if(status[i]!=VISITED&&!Tsort_nocycle(g,i,status))
+        for(auto &it:g){
+            if(!Tsort_nocycle(g,it.first,status))
+                return true;
+        }
+        for(auto &it:rg){
+            if(!Tsort_nocycle(rg,it.first,status))
                 return true;
         }
         return false;
     }
-    bool Tsort_nocycle(vector<int> &g,int u,vector<VStatus> &status){
+    bool Tsort_nocycle(unordered_map<int,int> &g,int u,vector<VStatus> &status){
         status[u]=DISCOVERED;
-        int v=g[u];
-        if(g[u]!=u){
-            switch(status[v]){
+        if(g.find(u)!=g.end()&&g[u]!=u){
+            switch(status[g[u]]){
                 case UNDISCOVERED:
-                    if(!Tsort_nocycle(g,v,status))
+                    if(!Tsort_nocycle(g,g[u],status))
                         return false;
                     break;
                 case DISCOVERED:
@@ -120,7 +128,6 @@ public:
         status[u]=VISITED;
         return true;
     }
-
 };
 // @lc code=end
 

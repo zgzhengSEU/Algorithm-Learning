@@ -74,6 +74,7 @@ class Solution {
 public:
     bool isValid(string s) {
 
+
     }
 };
 // @lc code=end

@@ -73,8 +73,15 @@
 class Solution {
 public:
     bool isValid(string s) {
-
-
+        unordered_map<char, char> m{{'(',')'},{'[',']'},{'{','}'}};
+        stack<char> st;
+        for(auto it:s){
+            if(st.empty())st.push(it);
+            else if(it==m[st.top()])st.pop();
+            else st.push(it);
+        }
+        if(st.empty())return true;
+        else return false;
     }
 };
 // @lc code=end

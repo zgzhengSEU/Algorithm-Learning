@@ -59,14 +59,10 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode *cur=head,*dummyH=new ListNode(0,head),*prev=head;
+        ListNode *cur=head,*dummyH=new ListNode(0,head);
         while(cur&&cur->next){
-            cur=cur->next;
-            while(cur&&cur->val==prev->val){
-                prev->next=cur->next;
-                cur=cur->next;
-            }
-            prev=prev->next;
+            if(cur->val==cur->next->val)cur->next=cur->next->next;
+            else cur=cur->next;
         }
         return dummyH->next;
     }

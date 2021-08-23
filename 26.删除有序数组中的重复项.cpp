@@ -74,17 +74,13 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        int n=nums.size(),slow=0,fast=1;
+        int n=nums.size(),left=0,right=0;
         if(n==0)return 0;
-        while(fast<n){
-            if(nums[slow]==nums[fast]){
-                while(fast<n&&nums[fast]==nums[slow])++fast;
-                if(fast==n)break;
-                nums[slow+1]=nums[fast];
-            }
-            ++slow;
+        while(right<n){
+            while(right<n&&nums[right]==nums[left])++right;
+            if(right<n)nums[++left]=nums[right];
         }
-        return ++slow;
+        return left+1;
     }
 };
 // @lc code=end

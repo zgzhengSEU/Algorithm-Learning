@@ -76,15 +76,16 @@
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-        int left=0,right=nums.size();//待处理区间[left,right)
-        while(left<right){//区间不为空
-            while(left<right&&nums[left]!=val)++left;
-            while(left<right&&nums[right-1]==val)--right;
-            if(left<right)swap(nums[left],nums[right-1]);
+        int left=0,right=nums.size()-1;//待处理区间[left,right]
+        while(left<=right){//区间不为空
+            while(left<=right&&nums[left]!=val)++left;
+            while(left<=right&&nums[right]==val)--right;
+            if(left<right)nums[left++]=nums[right--];
         }
-        return right;
+        return right+1;
     }
 };
+
 
 // @lc code=end
 

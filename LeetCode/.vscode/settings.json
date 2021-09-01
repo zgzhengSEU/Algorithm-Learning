@@ -1,11 +1,15 @@
 {
     "files.associations": {
+        "*.m": "matlab",
         "vector": "cpp",
         "array": "cpp",
         "bitset": "cpp",
         "string_view": "cpp",
         "initializer_list": "cpp",
         "utility": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "xstring": "cpp"
     }
 }

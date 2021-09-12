@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to Algorithm-Learning
 
 You can use the [editor on GitHub](https://github.com/zgzhengSEU/Algorithm-Learning/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
 

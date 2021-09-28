@@ -190,4 +190,4 @@ plugins:
   - jekyll-paginate
   - jekyll-spaceship
 
-theme: jekyll-theme-cayman
+remote_theme: "jeffreytse/jekyll-theme-yat"

@@ -6,10 +6,10 @@
  * https://leetcode.com/problems/generate-parentheses/description/
  *
  * algorithms
- * Medium (67.70%)
- * Likes:    10075
+ * Medium (68.16%)
+ * Likes:    10077
  * Dislikes: 403
- * Total Accepted:    875.7K
+ * Total Accepted:    876.2K
  * Total Submissions: 1.3M
  * Testcase Example:  '3'
  *
@@ -36,19 +36,8 @@
 // @lc code=start
 class Solution {
 public:
-    vector<string> ans;
-    int n;
-    vector<string> generateParenthesis(int _n) {  
-        n = _n;
-        dfs(0, 0, "");
-        return ans;
-    }
-    void dfs(int lc, int rc, string s) {
-        if (lc == n && rc == n) ans.push_back(s);
-        else {
-            if (lc < n) dfs(lc + 1, rc, s + '(');
-            if (rc < n && lc > rc) dfs(lc, rc + 1, s + ')');
-        }
+    vector<string> generateParenthesis(int n) {
+        
     }
 };
 // @lc code=end

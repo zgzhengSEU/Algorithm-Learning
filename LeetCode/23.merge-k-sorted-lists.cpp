@@ -76,20 +76,23 @@
 class Solution {
  public:
   struct cmp {
-    bool operator()(ListNode* a, ListNode* b) { return a->val > b->val; }
+    bool operator()(const ListNode* a, const ListNode* b) const {
+      return a->val > b->val;
+    }
   };
 
   ListNode* mergeKLists(vector<ListNode*>& lists) {
-      auto dummy = new ListNode(-1), tail = dummy;
-      priority_queue<ListNode*, vector<ListNode*>, cmp> heap;
-      for (auto l : lists) if (l) heap.push(l);
-      while (heap.size()) {
-          auto t = heap.top();
-          heap.pop();
-          if (t->next) heap.push(t->next);
-          tail = tail->next = t;
-      }
-      return dummy->next;
+    auto dummy = new ListNode(-1), tail = dummy;
+    priority_queue<ListNode*, vector<ListNode*>, cmp> heap;
+    for (auto l : lists)
+      if (l) heap.push(l);
+    while (heap.size()) {
+      auto t = heap.top();
+      heap.pop();
+      if (t->next) heap.push(t->next);
+      tail = tail->next = t;
+    }
+    return dummy->next;
   }
 };
 // @lc code=end
